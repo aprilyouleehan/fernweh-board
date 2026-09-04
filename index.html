@@ -184,7 +184,9 @@
     padding: 4px 10px; border-radius: 999px; background: #F3EDE2; color: #142840;
     white-space: nowrap; flex: none; align-self: flex-start; transition: background 0.15s ease, color 0.15s ease;
   }
-  .rate-room.revenue[open] > summary .view-amount-btn { background: #142840; color: #F3EDE2; }
+  .rate-room.revenue[open] > summary .view-amount-btn { background: #142840; color: #F3EDE2; animation: none; }
+  @keyframes pulse-cta { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+  .rate-room.revenue:not([open]) > summary .view-amount-btn { animation: pulse-cta 1.8s ease-in-out infinite; }
 
   /* ---------- 매출 보기: 펼침이 아니라 화면 중앙 팝업으로 표시 ---------- */
   details.rate-room.revenue[open]::before {
@@ -714,7 +716,7 @@
 <details class="rate-room revenue">
 <summary class="revenue-summary">
 <span class="name">Monthly Revenue</span>
-<span class="view-amount-btn">View Amount</span>
+<span class="view-amount-btn">View Amount ›</span>
 </summary>
 <div class="revenue-body">
 <button aria-label="닫기" class="chip-close" type="button">✕</button>
@@ -833,7 +835,7 @@
       var viewBtn = revenueToggle ? revenueToggle.querySelector('.view-amount-btn') : null;
       if (revenueToggle && viewBtn) {
         revenueToggle.addEventListener('toggle', function () {
-          viewBtn.textContent = revenueToggle.open ? 'Hide Amount' : 'View Amount';
+          viewBtn.textContent = revenueToggle.open ? 'Hide Amount' : 'View Amount ›';
         });
       }
     })();
