@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FERNWEH 페른베 이용 안내</title>
+<meta name="description" content="경주 한옥 스테이 페른베 이용 안내 · 오시는 길, 와이파이, 이용 규칙">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FERNWEH 페른베">
+<meta property="og:title" content="FERNWEH 페른베 이용 안내">
+<meta property="og:description" content="오시는 길 · 와이파이 · 이용 안내를 한곳에 모았어요.">
+<meta property="og:image" content="https://aprilyouleehan.github.io/fernweh-board/images/hero.jpg">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#E6E4DA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Noto+Serif+KR:wght@500;600&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#E6E4DA; --card:#F2F0E8; --ink:#2E2E2E; --muted:#5E5A52; --line:#CFCBBE; --fog:#A9ACA9;
+  --a:#6B7B84; --b:#5E4B3B; --pine:#2D4530; --on:#F2F0E8;
+  --display:"Playfair Display","Noto Serif KR",serif;
+  --serif:"Noto Serif KR",serif;
+  --sans:"Noto Sans KR",-apple-system,"Apple SD Gothic Neo",sans-serif;
+  color-scheme:light;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+html{background:var(--bg);-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.65;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+[hidden]{display:none!important}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--pine);outline-offset:3px;border-radius:6px}
+.wrap{max-width:520px;margin:0 auto}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 16px 10px 20px}
+.logo{font-family:var(--display);font-size:19px;letter-spacing:.08em;font-weight:500}
+.langs{display:flex;align-items:center;gap:4px}
+.langs button{border:0;background:transparent;font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.06em;color:var(--fog);padding:6px 4px;cursor:pointer}
+.langs button.on{color:var(--ink)}
+.langs .sep{color:var(--line);font-size:12px}
+
+/* hero */
+.hero{position:relative;aspect-ratio:1080/590;background:#3a322b center/cover no-repeat;display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
+.hero > .hs{position:absolute;z-index:0;inset:0;background:center/cover no-repeat;opacity:0;transition:opacity 1.6s ease;transform:scale(1.04);transition:opacity 1.6s ease,transform 7s ease-out}
+.hero > .hs.on{opacity:1;transform:scale(1)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,16,12,.72),rgba(20,16,12,0) 65%)}
+.hero > *{position:relative;z-index:1}
+.hero .tag{color:#E1DBC9;font-size:13px;margin:0 0 4px}
+.hero h1{font-family:var(--display);font-weight:500;color:#fff;font-size:clamp(25px,7.6vw,34px);line-height:1.15;margin:0;white-space:nowrap}
+.hero .hello{color:#E1DBC9;font-size:14px;margin:8px 0 0}
+
+/* sections */
+.sec{padding:20px 20px 22px;border-bottom:1px solid var(--line)}
+.h{font-family:var(--serif);font-weight:500;font-size:21px;margin:0 0 12px;line-height:1.35}
+.sub{font-size:13.5px;color:var(--muted);margin:0 0 12px}
+.p{font-size:14px;letter-spacing:-.2px;color:var(--muted);margin:0 0 8px;line-height:1.75}
+
+/* my stay */
+.dates{display:grid;grid-template-columns:repeat(3,1fr);align-items:baseline;padding:10px 0;border-top:1px solid var(--fog)}
+.dates .lbl{grid-column:1}
+.dates strong{grid-column:2 / 4;font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:-.2px;text-align:left;white-space:nowrap}
+.stay{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--fog);border-bottom:1px solid var(--fog)}
+.stay div{padding:12px 0}
+.lbl{display:block;font-size:12px;color:var(--muted)}
+.stay strong{font-family:var(--serif);font-weight:500;font-size:20px;display:inline-flex;align-items:center;height:32px;margin-top:2px}
+.stay .room-a,.stay .room-b{color:var(--on);border-radius:8px;padding:0 10px;font-size:17px}
+.stay .room-a{background:var(--a)} .stay .room-b{background:var(--b)}
+.lockline{display:flex;gap:8px;align-items:center;font-size:13.5px;color:var(--muted);margin:12px 0 0}
+.lockline svg{flex:none}
+
+/* address */
+.addr{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:12px;padding:12px 14px}
+.addr .t{flex:1;line-height:1.4}
+.addr .t b{display:block;font-weight:500;font-size:15px}
+.addr .t span{font-size:12px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:8px;padding:8px 13px;font-size:13px;font-weight:500;background:var(--ink);color:var(--on);cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn.line{background:transparent;border:1px solid var(--fog);color:var(--ink)}
+.btn.lg{padding:12px 16px;font-size:14.5px;flex:1}
+.grp svg{color:var(--pine)}
+.grp{display:flex;align-items:center;gap:7px;font-weight:700;font-size:14.5px;margin:6px 0 4px}
+.grp:not(:first-child){margin-top:18px}
+.cp svg{margin-right:-1px}
+.note{display:flex;gap:8px;align-items:center;font-size:13.5px;color:var(--muted);margin:10px 2px 0}
+
+/* plan card */
+.plan{display:block;width:100%;margin:12px 0 0;padding:0;border:0;background:var(--card);border-radius:12px;overflow:hidden;cursor:pointer;text-align:left}
+.plan .img{position:relative;line-height:0;background:#fff}
+.plan .img img{width:100%;height:auto;display:block}
+.plan .img svg{position:absolute;inset:0;width:100%;height:100%}
+.zone{fill:transparent}
+.route{fill:none;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2 15;animation:march 1s linear infinite}
+@keyframes march{to{stroke-dashoffset:-17}}
+.gate{stroke:#fff;stroke-width:3}
+.ring{fill:none;stroke-width:3;animation:ring 1.6s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes ring{from{opacity:.9;transform:scale(.6)}to{opacity:0;transform:scale(1.9)}}
+.plan .bar{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;font-size:14px}
+.plan .bar b{font-weight:500}
+.plan .bar span{color:var(--muted);font-size:13px;display:inline-flex;align-items:center;gap:2px}
+.way{font-size:14.5px;margin:12px 2px 0;line-height:1.7}
+.way b{font-weight:700}
+.way .ra{color:var(--a)} .way .rb{color:var(--b)}
+
+/* accordions */
+details.acc{border-bottom:1px solid var(--line)}
+details.acc > summary{list-style:none;display:flex;align-items:center;gap:12px;padding:16px 20px;cursor:pointer}
+details.acc > summary::-webkit-details-marker{display:none}
+details.acc > summary .ic{color:var(--pine);flex:none}
+details.acc > summary .tt{flex:1;font-family:var(--serif);font-weight:500;font-size:17px}
+details.acc > summary .chev{color:var(--muted);transition:transform .2s ease;flex:none}
+details.acc[open] > summary .chev{transform:rotate(180deg)}
+details.acc[open] > summary{background:var(--card)}
+.body{padding:4px 20px 20px;background:var(--card)}
+
+/* rows */
+.rows{display:flex;flex-direction:column}
+.row{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row .dot{width:9px;height:9px;border-radius:50%;flex:none}
+.row .t{flex:1;min-width:0;line-height:1.4}
+.row .t b{display:block;font-weight:500;font-size:15px}
+.row .t span{font-size:12.5px;color:var(--muted)}
+
+ol.steps{list-style:none;counter-reset:s;margin:0 0 6px;padding:0}
+ol.steps li{counter-increment:s;position:relative;padding:0 0 10px 34px;font-size:14px;letter-spacing:-.2px}
+ol.steps li{padding-left:26px}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:4px;width:17px;height:17px;border-radius:50%;background:transparent;border:1px solid var(--fog);color:var(--muted);font-size:10.5px;display:grid;place-items:center}
+.mini-h{font-weight:700;font-size:14.5px;margin:16px 0 6px}
+.mini-h:first-child{margin-top:6px}
+
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.rule{background:var(--bg);border-radius:10px;padding:12px}
+.rule svg{color:var(--pine)}
+.rule b{display:block;font-weight:500;font-size:14px;margin:6px 0 2px}
+.rule span{display:block;font-size:12.5px;line-height:1.5;color:var(--muted)}
+
+.cap{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:6px 0 12px}
+.cap div{border-radius:10px;padding:12px 14px;color:var(--on)}
+.cap b{display:block;font-family:var(--serif);font-weight:500;font-size:17px}
+.cap span{font-size:13px}
+ul.dots{margin:0;padding:0 0 0 16px;font-size:13.8px;letter-spacing:-.2px;color:var(--muted);line-height:1.7}
+ul.dots li{margin:0 0 10px}
+.textlink{display:inline-block;margin:2px 0 0;font-size:13.5px;font-weight:500;color:var(--ink)}
+.han p{margin:0 0 12px;font-size:14.5px;color:var(--muted);line-height:1.8}
+
+/* contact */
+.contact{display:flex;gap:8px;margin-top:4px}
+footer{padding:28px 20px 40px;text-align:center}
+footer .logo{display:block;font-size:18px}
+footer small{color:var(--muted);font-size:12px}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,16px);opacity:0;background:var(--ink);color:var(--on);padding:9px 18px;border-radius:999px;font-size:13.5px;transition:.25s;pointer-events:none;z-index:60}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* tour viewer */
+.tour{position:fixed;inset:0;z-index:50;background:#141414;color:#E6E4DA;display:flex;flex-direction:column;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+.tour-top{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;font-size:14px}
+.tour-top button{background:transparent;border:0;color:#E6E4DA;padding:6px;cursor:pointer;line-height:0}
+.track{flex:1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:center;display:flex;align-items:center;justify-content:center;padding:0 12px}
+.slide img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:6px;background:#222}
+.tour-nav{display:flex;justify-content:center;gap:6px;padding:14px 0 18px}
+.tour-nav button{border:1px solid #5E5A52;background:transparent;color:#E6E4DA;border-radius:999px;padding:6px 14px;font-size:13px;cursor:pointer}
+.tour-nav button.on{background:#E6E4DA;color:#141414;border-color:#E6E4DA}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.35);border:0;color:#fff;width:40px;height:40px;border-radius:50%;cursor:pointer;display:none;line-height:0}
+@media (hover:hover){.arrow{display:grid;place-items:center}}
+.arrow.l{left:12px}.arrow.r{right:12px}
+.stage{position:relative;flex:1;display:flex;min-height:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <span class="logo">FERNWEH</span>
+  <div class="langs" id="langs" role="group" aria-label="Language">
+    <button type="button" data-l="ko" aria-label="한국어">KO</button>
+    <span class="sep" aria-hidden="true">|</span><button type="button" data-l="en" aria-label="English">EN</button>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <div class="hs on" style="background-image:url('images/hero.jpg')"></div>
+  <div class="hs" style="background-image:url('images/hero-2.jpg')"></div>
+  <div class="hs" style="background-image:url('images/hero-3.jpg')"></div>
+  <h1>Welcome to Fernweh</h1>
+  <p class="hello" id="hello" data-t="intro"></p>
+</section>
+
+<!-- 내 예약 -->
+<section class="sec">
+  <h2 class="h" data-t="myStay"></h2>
+  <div class="dates" id="datesRow" hidden><span class="lbl" data-t="dates"></span><strong id="datesVal"></strong></div>
+  <div class="stay">
+    <div><span class="lbl" data-t="room"></span><strong id="roomName">A · B</strong></div>
+    <div><span class="lbl" data-t="checkin"></span><strong>15:00</strong></div>
+    <div><span class="lbl" data-t="checkout"></span><strong>11:00</strong></div>
+  </div>
+  <p class="lockline">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+    <span data-t="lock"></span>
+  </p>
+</section>
+
+<!-- 오시는 길 -->
+<section class="sec">
+  <h2 class="h" data-t="way"></h2>
+  <div class="addr">
+    <div class="t"><b>경북 경주시 포석로 980-16</b><span>980-16, Poseok-ro, Gyeongju-si</span></div>
+    <button class="btn line cp" type="button" data-copy="경북 경주시 포석로 980-16"></button>
+  </div>
+  <p class="note">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+    <span data-t="parking"></span>
+  </p>
+
+  <button class="plan" type="button" id="openTour">
+    <div class="img">
+      <img src="images/plan.jpg" alt="Fernweh site plan" width="1020" height="335">
+      <svg viewBox="0 0 1020 335" aria-hidden="true" id="planSvg"></svg>
+    </div>
+    <div class="bar"><b data-t="tour"></b><span><span data-t="pages"></span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></span></div>
+  </button>
+
+  <p class="way" id="wayText"></p>
+</section>
+
+<!-- 와이파이 -->
+<details class="acc">
+  <summary>
+    <svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8.8a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1" fill="currentColor"/></svg>
+    <span class="tt">Wi-Fi</span>
+    <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+  </summary>
+  <div class="body">
+    <div class="rows">
+      <div class="row"><span class="dot" style="background:var(--fog)"></span><div class="t"><b data-t="lounge"></b><span>fernweh1 · fernweh1!</span></div><button class="btn line cp" type="button" data-copy="fernweh1!"></button></div>
+      <div class="row"><span class="dot" style="background:var(--a)"></span><div class="t"><b>Suite A</b><span>fernweh2 · fernweh2!</span></div><button class="btn line cp" type="button" data-copy="fernweh2!"></button></div>
+      <div class="row"><span class="dot" style="background:var(--b)"></span><div class="t"><b>Suite B</b><span>fernweh3 · fernweh3!</span></div><button class="btn line cp" type="button" data-copy="fernweh3!"></button></div>
+      <div class="row"><span class="dot" style="background:var(--b)"></span><div class="t"><b>Suite B</b><span>fernweh4 · fernweh4!</span></div><button class="btn line cp" type="button" data-copy="fernweh4!"></button></div>
+    </div>
+  </div>
+</details>
+
+<!-- 출입·외출·퇴실 -->
+<details class="acc">
+  <summary>
+    <svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17M2 21h20M12 12h.01"/></svg>
+    <span class="tt" data-t="secEntry"></span>
+    <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+  </summary>
+  <div class="body">
+    <p class="mini-h" data-t="selfH"></p>
+    <p class="p" data-t="selfP"></p>
+    <p class="mini-h" data-t="lockH"></p>
+    <ol class="steps"><li data-t="lock1"></li><li data-t="lock2"></li><li data-t="lock3"></li></ol>
+    <p class="mini-h" data-t="outH"></p>
+    <p class="p" data-t="outP"></p>
+    <p class="mini-h" data-t="bagH"></p>
+    <p class="p" data-t="bagP"></p>
+  </div>
+</details>
+
+<!-- 이용 규칙 -->
+<details class="acc">
+  <summary>
+    <svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1.5 1.5L7 5M3 12l1.5 1.5L7 11M3 18l1.5 1.5L7 17"/></svg>
+    <span class="tt" data-t="secRules"></span>
+    <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+  </summary>
+  <div class="body">
+    <p class="sub" data-t="rulesSub"></p>
+    <div class="rules">
+      <div class="rule"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l18 18M8 13H3v3h8M16 13h5v3h-2M17 9c0-2 2-2 2-4M20 9c0-2 2-2 2-4"/></svg><b data-t="r1h"></b><span data-t="r1"></span></div>
+      <div class="rule"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l18 18M7 3v6a2 2 0 0 0 4 0V3M9 11v10M17 3c-2 0-3 3-3 6h3v12"/></svg><b data-t="r2h"></b><span data-t="r2"></span></div>
+      <div class="rule"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l18 18"/><circle cx="7" cy="9" r="1.6"/><circle cx="11" cy="5.5" r="1.6"/><circle cx="16" cy="6.5" r="1.6"/><path d="M8 17c0-3 2-5 4-5s4 2 4 5-2 3-4 3-4 0-4-3z"/></svg><b data-t="r3h"></b><span data-t="r3"></span></div>
+      <div class="rule"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l18 18M4 10h12v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 11h2a2 2 0 0 1 0 4h-2"/></svg><b data-t="r4h"></b><span data-t="r4"></span></div>
+      <div class="rule"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l18 18M12 3c1 3 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 1-3"/></svg><b data-t="r5h"></b><span data-t="r5"></span></div>
+      <div class="rule"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3c1 3 4 4 4 8a4 4 0 0 1-8 0c0-2 1-3 1-3M4 21l16-3M4 18l16 3"/></svg><b data-t="r6h"></b><span data-t="r6"></span></div>
+      <div class="rule"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 7l13-3 2 6-13 3zM9 12l1 4H5M18 8l3 1"/></svg><b>CCTV</b><span data-t="r7"></span></div>
+      <div class="rule"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2zM9 8h6M9 12h6"/></svg><b data-t="r8h"></b><span data-t="r8"></span></div>
+    </div>
+  </div>
+</details>
+
+<!-- 인원·침구 -->
+<details class="acc">
+  <summary>
+    <svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg>
+    <span class="tt" data-t="secGuests"></span>
+    <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+  </summary>
+  <div class="body">
+    <div class="cap">
+      <div style="background:var(--a)"><b>Suite A</b><span data-t="capA"></span></div>
+      <div style="background:var(--b)"><b>Suite B</b><span data-t="capB"></span></div>
+    </div>
+    <ul class="dots"><li data-t="g1"></li><li><span data-t="g2"></span><br><a class="textlink" id="guestReq" href="sms:050714461211" data-t="g2link"></a></li><li data-t="g3"></li><li data-t="g4"></li><li data-t="g5"></li><li data-t="g6"></li></ul>
+  </div>
+</details>
+
+<!-- 라운지 -->
+<details class="acc">
+  <summary>
+    <svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3"/><path d="M3 13a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v4H3zM5 17v2M19 17v2"/></svg>
+    <span class="tt" data-t="secLounge"></span>
+    <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+  </summary>
+  <div class="body">
+    <p class="p" data-t="lo1"></p>
+    <p class="p" data-t="lo2"></p>
+    <a class="textlink" id="loungeReq" href="sms:050714461211" data-t="loReq"></a>
+    <div class="rules" style="margin-top:14px">
+      <div class="rule"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10h16M6 10v9M18 10v9M8 6h8"/></svg><b data-t="lf1h"></b><span data-t="lf1"></span></div>
+      <div class="rule"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><rect x="6" y="8" width="9" height="8" rx="1"/><path d="M18 9v.01M18 12v.01"/></svg><b data-t="lf2h"></b><span data-t="lf2"></span></div>
+      <div class="rule"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 3h6v8H7zM5 11h12a1 1 0 0 1 1 1 6 6 0 0 1-6 6h-2a6 6 0 0 1-6-6 1 1 0 0 1 1-1zM9 18l-1 3h8l-1-3"/></svg><b data-t="lf3h"></b><span data-t="lf3"></span></div>
+      <div class="rule"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l18 18M7 3v6a2 2 0 0 0 4 0V3M9 11v10M17 3c-2 0-3 3-3 6h3v12"/></svg><b data-t="lf4h"></b><span data-t="lf4"></span></div>
+    </div>
+  </div>
+</details>
+
+<!-- 한옥 이용 안내 -->
+<details class="acc">
+  <summary>
+    <svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 10c4 0 6-3 10-6 4 3 6 6 10 6M5 10v10h14V10M10 20v-5h4v5"/></svg>
+    <span class="tt" data-t="secHanok"></span>
+    <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+  </summary>
+  <div class="body han"><p data-t="h1"></p><p data-t="h2"></p><p data-t="h3"></p></div>
+</details>
+
+<!-- 주변 -->
+<details class="acc">
+  <summary>
+    <svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+    <span class="tt" data-t="secNear"></span>
+    <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+  </summary>
+  <div class="body">
+    <p class="grp"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9M3 9h18v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0zM5 13v8h14v-8M10 21v-4h4v4"/></svg><span data-t="stores"></span></p>
+    <div class="rows">
+      <div class="row"><div class="t"><b data-t="s1"></b><span data-t="s1d"></span></div><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=35.8329039,129.2139713" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg> map</a></div>
+      <div class="row"><div class="t"><b data-t="s2"></b><span data-t="s2d"></span></div><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=35.8342761,129.2153065" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg> map</a></div>
+      <div class="row"><div class="t"><b data-t="s3"></b><span data-t="s3d"></span></div><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=35.8347373,129.2110009" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg> map</a></div>
+    </div>
+    <p class="grp"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="3" width="16" height="15" rx="3"/><path d="M4 11h16M8 21v-3M16 21v-3"/><circle cx="8" cy="14.5" r=".8" fill="currentColor"/><circle cx="16" cy="14.5" r=".8" fill="currentColor"/></svg><span data-t="transit"></span></p>
+    <div class="rows">
+      <div class="row"><div class="t"><b data-t="t1"></b><span data-t="t1d"></span></div><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=35.822061,129.210694" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg> map</a></div>
+      <div class="row"><div class="t"><b data-t="t2"></b><span data-t="t2d"></span></div><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=35.8397826,129.2024622" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg> map</a></div>
+      <div class="row"><div class="t"><b data-t="t3"></b><span data-t="t3d"></span></div><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=35.798365,129.138955" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg> map</a></div>
+    </div>
+  </div>
+</details>
+
+<!-- 문의 -->
+<section class="sec" style="border-bottom:0">
+  <h2 class="h" data-t="secContact"></h2>
+  <p class="sub" data-t="contactP"></p>
+  <div class="contact">
+    <a class="btn line lg" href="tel:050714461211"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span data-t="call"></span></a>
+    <a class="btn line lg" id="contactSms" href="sms:050714461211"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg><span data-t="text"></span></a>
+  </div>
+</section>
+
+<footer>
+  <span class="logo">FERNWEH</span>
+</footer>
+</div>
+
+<!-- 공간 둘러보기 -->
+<div class="tour" id="tour" hidden role="dialog" aria-modal="true" aria-label="Space tour">
+  <div class="tour-top">
+    <span id="count">1 / 15</span>
+    <button type="button" id="closeTour" aria-label="Close"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="stage">
+    <div class="track" id="track"></div>
+    <button class="arrow l" type="button" id="prev" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 6-6 6 6 6"/></svg></button>
+    <button class="arrow r" type="button" id="next" aria-label="Next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></button>
+  </div>
+  <div class="tour-nav">
+    <button type="button" data-go="0" data-t="all"></button>
+    <button type="button" data-go="2">Suite A</button>
+    <button type="button" data-go="7">Suite B</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+var T={
+ko:{intro:"페른베에서 머무는 동안 필요한 안내를<br>모두 담았습니다.",myStay:"내 예약",dates:"이용 날짜",room:"객실",checkin:"체크인",checkout:"체크아웃",
+lock:"객실 비밀번호는 문자로 따로 안내드립니다.",way:"오시는 길",parking:"주차는 객실당 1대까지 가능합니다.",tour:"공간 둘러보기",pages:"15장",
+wayText:"주차 후 왼편의 산책로를 따라 걸어 들어오시면<br>라운지를 지나 오른쪽의 첫 대문이 {A},<br>길 끝 정면의 대문이 {B}입니다.",
+lounge:"라운지",secEntry:"출입 · 외출 · 퇴실",selfH:"무인 체크인 시스템입니다",selfP:"프라이빗 세컨하우스처럼 편안하게 머무시도록<br>무인 체크인, 체크아웃으로 운영되고 있습니다.",
+lockH:"외출할 때 문 잠그기",lock1:"문 안쪽의 <b>CLOSE</b> 버튼을 눌러 주세요.",lock2:"문을 닫으면 자동으로 잠깁니다.",lock3:"다시 들어오실 땐 비밀번호를 눌러 주세요.",
+outH:"퇴실은 오전 11시까지",outP:"다음 손님을 위한 객실 정비가 바로 이어집니다.<br>퇴실 시간을 꼭 지켜 주세요.<br>원활한 운영을 위해 얼리 체크인과<br>레이트 체크아웃은 어렵습니다.",
+bagH:"짐 보관",bagP:"상주 직원 없이 운영되고 있어 체크인 전이나<br>체크아웃 후에는 짐 보관이 어렵습니다.<br>분실 방지를 위해 양해 부탁드립니다.",
+secRules:"이용 규칙",rulesSub:"모두가 편안하게 머물 수 있도록<br>함께 지켜 주시기 바랍니다.",
+r1h:"전 구역 금연",r1:"실내와 정원 모두 금연입니다.",r2h:"실내 취사 불가",r2:"객실 내에서는 조리할 수 없습니다.",r3h:"반려동물 동반 불가",r3:"반려동물과 함께 입실할 수 없습니다.",
+r4h:"조식 미제공",r4:"조식은 제공되지 않습니다.",r5h:"화기 사용 제한",r5:"촛불, 폭죽, 개인 화기 및 버너는 사용할 수 없습니다.",r6h:"파이어피트",r6:"산불 위험 기간에는 운영이 일시 중단될 수 있습니다.",
+r7:"보안을 위해 외부 공용공간 일부에 CCTV가 운영됩니다.",r8h:"훼손 · 오염",r8:"집기·시설·침구의 훼손이나 심한 오염 시 비용이 청구될 수 있습니다.",
+secGuests:"인원 · 침구",capA:"기준 2인 · 최대 3인",capB:"기준 4인 · 최대 6인",
+g1:"기준 인원을 초과하는 경우<br>1인당 30,000원의 추가 요금이 있습니다.",g2:"예약 시 인원 추가를 하지 못하셨다면<br>입실 전 연락 주시면 결제를 도와드립니다.",g2link:"문자로 연락하기 →",
+g3:"추가 침구는 추가 인원 1인당<br>1세트까지 제공됩니다.",g4:"의자와 집기는 기준 인원에 맞춰<br>준비되어 있습니다.",g5:"최대 인원을 초과한 입실은 불가하며,<br>이로 인한 취소·환불은 어렵습니다.",g6:"보호자를 동반하지 않은 미성년자는<br>입실 및 숙박이 불가합니다.",
+secLounge:"라운지 이용 안내",lo1:"라운지는 미리 요청해 주신 분들에 한해<br>이용하실 수 있도록 준비해 드립니다.",lo2:"두 객실 손님의 이용이 겹치지 않도록<br>입실 전에 문자로 요청해 주세요.",loReq:"라운지 이용 요청하기 →",
+lf1h:"테이블 · 의자",lf1:"간단한 식음료를 즐기실 수 있습니다.",lf2h:"전자레인지",lf2:"간단히 데워 드실 수 있습니다.",lf3h:"화장실",lf3:"라운지 안에 화장실이 있습니다.",lf4h:"취사 불가",lf4:"라운지에서도 조리는 할 수 없습니다.",
+cMsg:"안녕하세요. 페른베 예약 고객입니다.\n\n[예약 정보]\n객실: {r}\n이용 날짜: {d}\n\n[문의 내용]\n",gMsg:"[인원 추가 문의]\n객실: {r}\n이용 날짜: {d}\n추가 인원: 명\n추가 침구 필요 여부: ",loMsg:"[라운지 이용 요청]\n객실: {r}\n이용 날짜·시간: \n인원: ",
+secHanok:"한옥 이용 안내",h1:"페른베는 전통 방식으로 지은 한옥입니다.",h2:"목재가 자리를 잡는 초기에는<br>미세한 목분이나 나무가루가 생길 수 있습니다.",h3:"이는 자연스러운 목재 부산물이며,<br>청소와 환기로 꾸준히 관리하고 있습니다.",
+secNear:"주변 편의점 · 교통",stores:"편의점",transit:"대중교통",
+s1:"이마트24 경주교촌점",s1d:"도보 약 8분 · 08:00–22:00",s2:"세븐일레븐 첨성로점",s2d:"도보 약 11분 · 24시간",s3:"GS25 경주황남점",s3d:"도보 약 11분",
+t1:"오릉후문 버스정류장",t1d:"도보 약 10분",t2:"경주 고속·시외버스터미널",t2d:"차로 약 5분",t3:"경주역 (KTX·SRT)",t3d:"차로 약 20분",
+secContact:"문의",contactP:"머무시는 동안 문의 사항이 있으시면 편하게 연락해 주세요.",call:"전화하기",text:"문자 보내기",thanks:"감사합니다. FERNWEH 드림",
+copy:"copy",copied:"복사되었습니다",all:"전체",hello:"{n}님, 페른베에 오신 것을 환영합니다.",nights:"{n}박",wd:["일","월","화","수","목","금","토"]},
+en:{intro:"Everything you need for your stay,<br>all in one place.",myStay:"My Stay",dates:"Dates",room:"Room",checkin:"Check-in",checkout:"Check-out",
+lock:"Your room code will be sent<br>separately by text message.",way:"Getting Here",parking:"Parking: one car per suite.",tour:"Explore the spaces",pages:"15 pages",
+wayText:"After parking, follow the path on your left.<br>Just past the lounge, the first gate<br>on your right is {A}.<br>The gate at the end of the path is {B}.",
+lounge:"Lounge",secEntry:"Access & Check-out",selfH:"Self check-in",selfP:"Like a private second home, Fernweh offers<br>self check-in and check-out,<br>so you can settle in at your own pace.",
+lockH:"Locking up when you go out",lock1:"Press <b>CLOSE</b> on the inside of the lock.",lock2:"Shut the door and it locks automatically.",lock3:"To come back in, just enter your code.",
+outH:"Check-out by 11:00 AM",outP:"Housekeeping begins right after you leave,<br>so please check out on time.<br>Early check-in and late check-out<br>are not available.",
+bagH:"Luggage storage",bagP:"As Fernweh has no on-site staff,<br>we are unable to store luggage before<br>check-in or after check-out.<br>Thank you for your understanding.",
+secRules:"House Rules",rulesSub:"Please help us keep Fernweh<br>comfortable for everyone.",
+r1h:"No smoking",r1:"Indoors and in the gardens.",r2h:"No cooking",r2:"Cooking is not permitted in the suites.",r3h:"No pets",r3:"Pets are not allowed.",
+r4h:"No breakfast",r4:"Breakfast is not provided.",r5h:"No open flames",r5:"Candles, fireworks, stoves and burners are not allowed.",r6h:"Fire pit",r6:"May be closed during wildfire-risk periods.",
+r7:"Operates in some outdoor shared areas for security.",r8h:"Damage",r8:"Charges may apply for damage or heavy soiling.",
+secGuests:"Guests & Bedding",capA:"Standard 2 · Max 3",capB:"Standard 4 · Max 6",
+g1:"Each guest above the standard occupancy<br>is charged KRW 30,000.",g2:"Didn't add extra guests when booking?<br>Contact us before check-in and we'll help.",g2link:"Text us →",
+g3:"One extra bedding set is provided<br>per additional guest.",g4:"Chairs and tableware are prepared<br>for the standard occupancy.",g5:"Stays above the maximum occupancy<br>are not permitted or refundable.",g6:"Minors cannot stay without<br>a parent or guardian.",
+secLounge:"Lounge",lo1:"The lounge is available to guests<br>who request it in advance.",lo2:"To avoid overlapping with the other suite,<br>please text us before check-in.",loReq:"Request the lounge →",
+lf1h:"Table & chairs",lf1:"For light food and drinks.",lf2h:"Microwave",lf2:"For warming up simple dishes.",lf3h:"Restroom",lf3:"Located inside the lounge.",lf4h:"No cooking",lf4:"Cooking is not permitted here either.",
+cMsg:"Hello, this is a Fernweh guest.\n\n[Booking]\nSuite: {r}\nDates: {d}\n\n[Question]\n",gMsg:"[Extra guests]\nSuite: {r}\nDates: {d}\nNumber of extra guests: \nExtra bedding needed: ",loMsg:"[Lounge request]\nSuite: {r}\nDate & time: \nGuests: ",
+secHanok:"About the Hanok",h1:"Fernweh is a hanok built<br>using traditional methods.",h2:"While the new timber settles,<br>you may notice a little fine wood dust.",h3:"This is a natural part of the wood,<br>and we keep it in check with<br>regular cleaning and ventilation.",
+secNear:"Nearby & Transport",stores:"Convenience stores",transit:"Public transport",
+s1:"emart24 Gyochon",s1d:"8 min walk · 08:00–22:00",s2:"7-Eleven Cheomseong-ro",s2d:"11 min walk · Open 24h",s3:"GS25 Hwangnam",s3d:"11 min walk",
+t1:"Oreung Back Gate bus stop",t1d:"10 min walk",t2:"Gyeongju Bus Terminal",t2d:"Express & intercity · 5 min by car",t3:"Gyeongju Station (KTX · SRT)",t3d:"About 20 min by car",
+secContact:"Need anything?",contactP:"If you need anything during your stay,<br>please feel free to reach out.",call:"Call",text:"Text",thanks:"Thank you. — FERNWEH",
+copy:"copy",copied:"Copied",all:"All",hello:"Welcome to Fernweh, {n}.",nights:"{n} night",wd:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],mo:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}
+};
+var COPYICON='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
+
+var q=new URLSearchParams(location.search), P=window.__P||{};
+function g(k){ return (P[k]!=null?P[k]:q.get(k))||''; }
+var room=(g('room')+'').trim().toUpperCase(); if(room!=='A'&&room!=='B') room='';
+var din=g('in'), dout=g('out'), name=(g('name')+'').trim();
+var lang=(g('lang')==='en')?'en':'ko';
+try{ var sv=localStorage.getItem('fw-lang'); if(!g('lang')&&sv==='en') lang='en'; }catch(e){}
+
+function pd(s){ var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s||''); return m?new Date(+m[1],+m[2]-1,+m[3]):null; }
+function fmt(d,L,short){ var t=T[L]; return L==='en'? t.mo[d.getMonth()]+' '+d.getDate()+(short?'':'')+' ('+t.wd[d.getDay()]+')' : (short?'':(d.getMonth()+1)+'월 ')+d.getDate()+'일('+t.wd[d.getDay()]+')'; }
+
+function apply(L){
+  var t=T[L]; document.documentElement.lang=L;
+  document.querySelectorAll('[data-t]').forEach(function(el){ var v=t[el.dataset.t]; if(v!=null) el.innerHTML=v; });
+  document.querySelectorAll('.cp').forEach(function(b){ b.innerHTML=COPYICON+' '+t.copy; });
+  document.getElementById('hello').innerHTML = name ? t.hello.replace('{n}',name) : t.intro;
+  var a='<b class="'+(room==='A'?'ra':'')+'">Suite A</b>', b='<b class="'+(room==='B'?'rb':'')+'">Suite B</b>';
+  document.getElementById('wayText').innerHTML=t.wayText.replace('{A}',a).replace('{B}',b);
+  var di=pd(din), dou=pd(dout), row=document.getElementById('datesRow');
+  if(di&&dou){ var n=Math.round((dou-di)/864e5); row.hidden=false;
+    var same=(di.getMonth()===dou.getMonth()); document.getElementById('datesVal').textContent=fmt(di,L)+' – '+(L==='en'?fmt(dou,L):fmt(dou,L,same))+' · '+t.nights.replace('{n}',n)+(L==='en'&&n>1?'s':''); }
+  var dtxt=document.getElementById('datesVal').textContent.split(' · ')[0]||'';
+  document.getElementById('guestReq').href='sms:050714461211?&body='+encodeURIComponent(t.gMsg.replace('{r}',room?('Suite '+room):'').replace('{d}',dtxt));
+  var rr=room?('Suite '+room):'';
+  document.getElementById('contactSms').href='sms:050714461211?&body='+encodeURIComponent(t.cMsg.replace('{r}',rr).replace('{d}',dtxt));
+  var lr=document.getElementById('loungeReq'); lr.href='sms:050714461211?&body='+encodeURIComponent(t.loMsg.replace('{r}',room?('Suite '+room):''));
+  document.querySelectorAll('#langs button').forEach(function(x){ x.classList.toggle('on',x.dataset.l===L); });
+  lang=L;
+}
+var rn=document.getElementById('roomName');
+if(room){ rn.textContent='Suite '+room; rn.className='room-'+room.toLowerCase(); }
+apply(lang);
+
+// language buttons
+document.querySelectorAll('#langs button').forEach(function(b){
+  b.addEventListener('click',function(){
+    var L=b.dataset.l;
+    try{ localStorage.setItem('fw-lang',L); }catch(e){}
+    apply(L);
+  });
+});
+
+// hero slideshow
+(function(){ var hs=document.querySelectorAll('#hero .hs'), i=0;
+  if(hs.length<2||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  setInterval(function(){ if(document.hidden) return; hs[i].classList.remove('on'); i=(i+1)%hs.length; hs[i].classList.add('on'); },5000);
+})();
+
+// plan overlay
+var C={A:'#6B7B84',B:'#5E4B3B'};
+var R={A:{zone:[318,72,228,192],pts:'905,170 908,244 600,270 455,272 455,258',gate:[455,254]},
+       B:{zone:[18,66,296,258],pts:'905,170 908,244 600,270 455,276 318,285',gate:[312,285]}};
+var svg=document.getElementById('planSvg'), h='';
+['A','B'].forEach(function(k){ var r=R[k], on=(room===k);
+  if(on){ h+='<rect x="'+r.zone[0]+'" y="'+r.zone[1]+'" width="'+r.zone[2]+'" height="'+r.zone[3]+'" rx="10" fill="'+C[k]+'" fill-opacity=".28"/>';
+    h+='<polyline class="route" points="'+r.pts+'" stroke="'+C[k]+'"/>';
+    h+='<circle class="ring" cx="'+r.gate[0]+'" cy="'+r.gate[1]+'" r="15" stroke="'+C[k]+'"/>'; }
+  h+='<circle class="gate" cx="'+r.gate[0]+'" cy="'+r.gate[1]+'" r="'+(on?10:8)+'" fill="'+C[k]+'"/>'; });
+h+='<rect x="907" y="88" width="46" height="34" rx="8" fill="#2E2E2E"/><text x="930" y="113" text-anchor="middle" fill="#F2F0E8" font-family="Playfair Display,serif" font-size="24" font-weight="600">P</text>';
+svg.innerHTML=h;
+
+// tour
+var tour=document.getElementById('tour'), track=document.getElementById('track'), cnt=document.getElementById('count');
+var N=15, built=false, navBtns=tour.querySelectorAll('[data-go]');
+function build(){ if(built) return; built=true; var s='';
+  for(var i=1;i<=N;i++){ var n=(i<10?'0':'')+i;
+    s+='<div class="slide"><img src="images/tour-'+n+'.jpg" alt="Fernweh space guide '+i+'" loading="'+(i<4?'eager':'lazy')+'" width="900" height="1125"></div>'; }
+  track.innerHTML=s; }
+function idx(){ return Math.round(track.scrollLeft/Math.max(1,track.clientWidth)); }
+function go(i,sm){ track.scrollTo({left:i*track.clientWidth,behavior:sm?'smooth':'auto'}); }
+function upd(){ var i=idx(); cnt.textContent=(i+1)+' / '+N; var sec=i>=7?2:(i>=2?1:0); navBtns.forEach(function(b,j){ b.classList.toggle('on',j===sec); }); }
+track.addEventListener('scroll',function(){ requestAnimationFrame(upd); },{passive:true});
+document.getElementById('openTour').addEventListener('click',function(){ build(); tour.hidden=false; document.body.style.overflow='hidden'; requestAnimationFrame(function(){ go(0,false); upd(); }); });
+function close(){ tour.hidden=true; document.body.style.overflow=''; }
+document.getElementById('closeTour').addEventListener('click',close);
+document.getElementById('prev').addEventListener('click',function(){ go(Math.max(0,idx()-1),true); });
+document.getElementById('next').addEventListener('click',function(){ go(Math.min(N-1,idx()+1),true); });
+navBtns.forEach(function(b){ b.addEventListener('click',function(){ go(+b.dataset.go,true); }); });
+document.addEventListener('keydown',function(e){ if(tour.hidden) return; if(e.key==='Escape') close();
+  if(e.key==='ArrowRight') go(Math.min(N-1,idx()+1),true); if(e.key==='ArrowLeft') go(Math.max(0,idx()-1),true); });
+
+// copy
+var toast=document.getElementById('toast'), tm;
+function show(m){ toast.textContent=m; toast.classList.add('show'); clearTimeout(tm); tm=setTimeout(function(){ toast.classList.remove('show'); },1600); }
+function fb(x){ var a=document.createElement('textarea'); a.value=x; a.style.position='fixed'; a.style.opacity='0'; document.body.appendChild(a); a.select(); try{document.execCommand('copy');}catch(e){} document.body.removeChild(a); }
+document.querySelectorAll('[data-copy]').forEach(function(el){ el.addEventListener('click',function(){ var x=el.dataset.copy, m=T[lang].copied;
+  if(navigator.clipboard&&window.isSecureContext){ navigator.clipboard.writeText(x).then(function(){show(m);},function(){fb(x);show(m);}); } else { fb(x); show(m); } }); });
+})();
+</script>
+</body>
+
+</html>
